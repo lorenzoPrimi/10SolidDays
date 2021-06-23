@@ -24,6 +24,7 @@ contract ICO is Ownable {
     function buyTokens() payable external saleStarted {
         uint tot_amount = token.balanceOf(address(this));
         uint amount = price * msg.value;
+	//TODO refund ETH in case of failure
         require(tot_amount > amount, "Not enough balance");
         token.transfer(msg.sender, amount);
     }
